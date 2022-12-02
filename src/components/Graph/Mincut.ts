@@ -1,19 +1,19 @@
-type graph = Array<Array<number>>;
+import { TGraph } from "../../types";
 
 export class Graph {
-  graph: graph;
+  graph: TGraph;
   size: number;
   source: number;
   sink: number;
 
-  constructor(graph: graph, source: number, sink: number) {
+  constructor(graph: TGraph, source: number, sink: number) {
     this.graph = graph;
     this.size = graph.length;
     this.source = source;
     this.sink = sink;
   }
 
-  bfs: (residualGraph: graph, parent: Array<number>) => boolean = (
+  bfs: (residualGraph: TGraph, parent: Array<number>) => boolean = (
     residualGraph,
     parent
   ) => {
@@ -36,7 +36,7 @@ export class Graph {
     return visited[this.sink];
   };
 
-  dfs: (residualGraph: graph, current: number, visited: boolean[]) => void = (
+  dfs: (residualGraph: TGraph, current: number, visited: boolean[]) => void = (
     residualGraph,
     current,
     visited
