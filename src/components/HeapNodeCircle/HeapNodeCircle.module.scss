@@ -1,0 +1,12 @@
+.heapNode {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: black solid 3px;
+  border-radius: 50%;
+  width: 3vw;
+  height: 3vw;
+  background-color: white;
+  z-index: 2;
+}
