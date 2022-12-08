@@ -1,5 +1,62 @@
-.vis {
-  overflow: scroll;
-  height: 100vh;
-  width: 90vw;
+$enabled-step: orange;
+$enabled-play: rgb(17, 190, 17);
+$enabled-pause: red;
+$disabled: rgb(197, 185, 185);
+
+@mixin enabledButton($color) {
+  animation: pulse 0.9s infinite;
+  border-color: $color;
+  background-color: $color;
+  cursor: pointer;
+}
+
+.heapVis {
+  width: 85vw;
+
+  .stepButtons, .playButtons {
+    display: inline;
+  }
+
+  .playButtons {
+    margin-left: 54.5vw;
+  }
+
+  button {
+    height: 4vh;
+    width: 7vw;
+    border: 1px $disabled solid;
+    background-color: $disabled;
+    color: white;
+    border-radius: 6px;
+    margin-left: 0.5vw;
+    margin-top: 1vh;
+  }
+
+  .stepButtonEnabled {
+    @include enabledButton($enabled-step);
+  }
+
+  .playButtonEnabled {
+    @include enabledButton($enabled-play);
+  }
+
+  .pauseButtonEnabled {
+    @include enabledButton($enabled-pause)
+  }
+
+  .buttonDisabled {
+    animation: none;
+    border-color: $disabled;
+    background-color: $disabled;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(100%);
+  }
+
+  50% {
+    transform: scale(103%);
+  }
 }

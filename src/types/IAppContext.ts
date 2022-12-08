@@ -9,4 +9,6 @@ export interface IAppContext {
   setVertices: Dispatch<SetStateAction<IVertex[]>>;
   nodeSteps: Array<HeapNode[]>;
   setNodeSteps: Dispatch<SetStateAction<Array<HeapNode[]>>>;
+  visSpeed: number;
+  setVisSpeed: Dispatch<SetStateAction<number>>;
 }

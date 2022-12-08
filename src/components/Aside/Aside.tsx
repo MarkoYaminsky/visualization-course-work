@@ -7,6 +7,7 @@ export const Aside: React.FC<{ option: "heap" | "mincut" }> = (props) => {
   const context = useContext(AppContext);
   const [matrixInput, setMatrixInput] = useState("");
   const [insertInput, setInsertInput] = useState("");
+  const [searchInput, setSearchInput] = useState("");
   const heap = useMemo(() => new Heap(), []);
 
   const handleMatrixInput = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -17,14 +18,27 @@ export const Aside: React.FC<{ option: "heap" | "mincut" }> = (props) => {
     setInsertInput(event.target.value);
   };
 
+  const handleSearchInput = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(event.target.value);
+  };
+
+  const handleVisSpeedInput = (event: ChangeEvent<HTMLInputElement>) => {
+    context?.setVisSpeed(parseInt(event.target.value));
+  };
+
   const insert = () => {
-    const steps = heap.insert(parseInt(insertInput));    
-    context?.setNodeSteps(() => {
-      console.log("steps array");
-      console.log(steps);
-      console.log("------------------------");
-      return steps;
-    });
+    const steps = heap.insert(parseInt(insertInput));
+    context?.setNodeSteps(steps);
+  };
+
+  const deleteRoot = () => {
+    const steps = heap.deleteRoot();
+    context?.setNodeSteps(steps);
+  };
+
+  const search = () => {
+    const steps = heap.searchForValue(parseInt(searchInput));
+    context?.setNodeSteps(steps);
   };
 
   return (
@@ -46,11 +60,31 @@ export const Aside: React.FC<{ option: "heap" | "mincut" }> = (props) => {
           <>
             <h1>Вставка ноди</h1>
             <input
-              type="text"
+              className={styles.insertInput}
+              type="number"
               value={insertInput}
               onChange={handleInsertInput}
             />
             <button onClick={insert}>Тиць</button>
+            <h1>Пошук значення</h1>
+            <input
+              className={styles.insertInput}
+              type="number"
+              value={searchInput}
+              onChange={handleSearchInput}
+            />
+            <button onClick={search}>Тиць</button>
+            <h1>Видалення найменшого</h1>
+            <button onClick={deleteRoot} style={{ marginTop: "1vh" }}>
+              Тиць
+            </button>
+            <h1>Швидкість руху кроку в мс</h1>
+            <input
+              className={styles.insertInput}
+              type="number"
+              value={context?.visSpeed}
+              onChange={handleVisSpeedInput}
+            />
           </>
         )}
       </div>

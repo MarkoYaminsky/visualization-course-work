@@ -11,11 +11,22 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = (
   const [edges, setEdges] = useState<IEdge[]>([]);
   const [vertices, setVertices] = useState<IVertex[]>([]);
   const [nodeSteps, setNodeSteps] = useState<Array<HeapNode[]>>([]);
+  const [visSpeed, setVisSpeed] = useState(1000);
 
   return (
-    <AppContext.Provider value={{ edges, setEdges, vertices, setVertices, nodeSteps, setNodeSteps }}>
+    <AppContext.Provider
+      value={{
+        edges,
+        setEdges,
+        vertices,
+        setVertices,
+        nodeSteps,
+        setNodeSteps,
+        visSpeed,
+        setVisSpeed,
+      }}
+    >
       {props.children}
     </AppContext.Provider>
   );
 };
-
