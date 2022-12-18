@@ -1,4 +1,4 @@
-.heapNode {
+.node {
   position: absolute;
   display: flex;
   align-items: center;
@@ -7,6 +7,5 @@
   border-radius: 50%;
   width: 3vw;
   height: 3vw;
-  background-color: white;
   z-index: 2;
 }

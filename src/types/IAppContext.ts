@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction } from "react";
 import { HeapNode } from "../components";
-import { IEdge, IVertex } from "./GraphTypes";
+import { Edge, Vertex } from "../components/Graph/Mincut";
 
 export interface IAppContext {
-  edges: IEdge[];
-  vertices: IVertex[];
-  setEdges: Dispatch<SetStateAction<IEdge[]>>;
-  setVertices: Dispatch<SetStateAction<IVertex[]>>;
+  edges: Edge[];
+  vertices: Vertex[];
+  setEdges: Dispatch<SetStateAction<Edge[]>>;
+  setVertices: Dispatch<SetStateAction<Vertex[]>>;
   nodeSteps: Array<HeapNode[]>;
   setNodeSteps: Dispatch<SetStateAction<Array<HeapNode[]>>>;
   visSpeed: number;

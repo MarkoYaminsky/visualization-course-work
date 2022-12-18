@@ -1,16 +1,54 @@
 import { TGraph } from "../../types";
 
+export class Vertex {
+  x: number;
+  y: number;
+  visited: boolean;
+  sink: boolean;
+  source: boolean;
+  parent: number | null;
+
+  constructor(x: number, y: number, sink?: boolean, source?: boolean) {
+    this.x = x;
+    this.y = y;
+    this.visited = false;
+    this.sink = sink ? sink : false;
+    this.source = source ? source : false;
+    this.parent = null;
+  }
+}
+
+export class Edge {
+  x1: number;
+  x2: number;
+  y1: number;
+  y2: number;
+  weight: number;
+
+  constructor(x1: number, x2: number, y1: number, y2: number, weight: number) {
+    this.x1 = x1;
+    this.x2 = x2;
+    this.y1 = y1;
+    this.y2 = y2;
+    this.weight = weight;
+  }
+}
+
 export class Graph {
   graph: TGraph;
   size: number;
   source: number;
   sink: number;
+  vertices: Vertex[];
+  edges: Edge[];
 
-  constructor(graph: TGraph, source: number, sink: number) {
-    this.graph = graph;
-    this.size = graph.length;
+  constructor(source: number, sink: number) {
+    this.size = 0;
     this.source = source;
     this.sink = sink;
+    this.vertices = [];
+    this.edges = [];
+    this.graph = [[]]
   }
 
   bfs: (residualGraph: TGraph, parent: Array<number>) => boolean = (

@@ -5,14 +5,10 @@ import { Heap } from "../HeapVis";
 
 export const Aside: React.FC<{ option: "heap" | "mincut" }> = (props) => {
   const context = useContext(AppContext);
-  const [matrixInput, setMatrixInput] = useState("");
   const [insertInput, setInsertInput] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const heap = useMemo(() => new Heap(), []);
 
-  const handleMatrixInput = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setMatrixInput(event.target.value);
-  };
 
   const handleInsertInput = (event: ChangeEvent<HTMLInputElement>) => {
     setInsertInput(event.target.value);
@@ -42,19 +38,13 @@ export const Aside: React.FC<{ option: "heap" | "mincut" }> = (props) => {
   };
 
   return (
-    <aside className={styles.aside}>
+    <aside
+      className={styles.aside}
+    >
       <div className={styles.functional}>
         {props.option === "mincut" ? (
           <>
-            <h1>Задання графа матрицею суміжності</h1>
-            <textarea
-              id="matrixInput"
-              value={matrixInput}
-              onChange={handleMatrixInput}
-              cols={45}
-              rows={20}
-            ></textarea>
-            <button>Побудувати граф</button>
+          
           </>
         ) : (
           <>

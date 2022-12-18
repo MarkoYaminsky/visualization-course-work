@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context";
 import { IAppContext } from "../../types";
-import { HeapEdge } from "../HeapEdge";
-import { HeapNodeCircle } from "../HeapNodeCircle";
+import { Edge } from "../Edge";
+import { NodeCircle } from "../NodeCircle";
 import styles from "./HeapVis.module.scss";
 import { HeapNode } from "./MinHeap";
 
@@ -109,13 +109,15 @@ export const HeapVis: React.FC = () => {
         <div className={styles.vis}>
           {currentArray &&
             currentArray.map((node, index) => (
-              <HeapNodeCircle
+              <NodeCircle
                 key={node.position + node.x + node.y + `-${index}`}
                 positionX={node.x}
                 positionY={node.y}
                 value={node.value}
                 visited={node.visited}
                 current={node.current}
+                option="heap"
+                toggleNode={() => undefined}
               />
             ))}
         </div>
@@ -124,7 +126,7 @@ export const HeapVis: React.FC = () => {
           currentArray.map((node, index) => {
             if (index > 0) {
               return (
-                <HeapEdge
+                <Edge
                   key={
                     node.x + node.y + node.parent!.x + node.parent!.y + index
                   }
@@ -132,6 +134,7 @@ export const HeapVis: React.FC = () => {
                   parentX={node.parent!.x}
                   childY={node.y}
                   parentY={node.parent!.y}
+                  option="heap"
                 />
               );
             }
