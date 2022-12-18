@@ -4,17 +4,24 @@ aside {
   height: 100%;
   display: flex;
   align-items: center;
+  width: 15vw;
 
   .functional {
-    height: 60%;
+    height: 70%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     h1 {
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-family: Inter;
+      text-align: center;
+    }
+
+    .insertInput {
+      margin-block: 1vh;
+      height: 3vh;
     }
 
     textarea {
@@ -36,6 +43,7 @@ aside {
       border-color: transparent;
       cursor: pointer;
       transition: 0.4s;
+      margin-bottom: 10vh;
 
       &:hover {
         transform: scale(97%);
